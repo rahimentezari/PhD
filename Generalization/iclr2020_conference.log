@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.6)  3 OCT 2019 13:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.6)  7 OCT 2019 16:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -894,6 +894,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsfit' in version `bold'
 
 LaTeX Warning: Label `generalization_mystery' multiply defined.
 
+
+LaTeX Warning: Label `QualitativeCheck' multiply defined.
+
 )
 \openout1 = `iclr2020_conference.aux'.
 
@@ -1046,19 +1049,84 @@ File: pix/NormbasedGenBounds.png Graphic file (type png)
 <use pix/NormbasedGenBounds.png>
 Package pdftex.def Info: pix/NormbasedGenBounds.png  used on input line 128.
 (pdftex.def)             Requested size: 198.7425pt x 111.48662pt.
-(./iclr2020_conference.bbl [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
-}
+<pix/VGGNoiceInjection.png, id=29, 982.67125pt x 429.605pt>
+File: pix/VGGNoiceInjection.png Graphic file (type png)
+<use pix/VGGNoiceInjection.png>
+Package pdftex.def Info: pix/VGGNoiceInjection.png  used on input line 136.
+(pdftex.def)             Requested size: 317.9892pt x 139.01688pt.
 
- <./pix/ICML2019Slides.png> <./pix/NormbasedGenBounds.png>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 159.
- [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 159.
+Package caption Warning: \label without proper reference on input line 139.
+See the caption package documentation for explanation.
 
-(./iclr2020_conference.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 159.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 159.
+
+LaTeX Warning: Reference `VGGnoiseinjection' on page 1 undefined on input line 
+141.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+ <./pix/ICML2019Slides.png> <./pix/NormbasedGenBounds.png>]
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 144.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+
+Package caption Warning: \label without proper reference on input line 152.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `SVdistrubition_vgg' on page 2 undefined on input line
+ 145.
+
+<pix/SVdistributionVGG.png, id=57, 233.37187pt x 233.37187pt>
+File: pix/SVdistributionVGG.png Graphic file (type png)
+<use pix/SVdistributionVGG.png>
+Package pdftex.def Info: pix/SVdistributionVGG.png  used on input line 149.
+(pdftex.def)             Requested size: 119.2467pt x 119.24597pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 163.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2 <./pix/VGGNoiceInjection.png>]
+<pix/QualitativeCheck.png, id=76, 785.93625pt x 681.54625pt>
+File: pix/QualitativeCheck.png Graphic file (type png)
+<use pix/QualitativeCheck.png>
+Package pdftex.def Info: pix/QualitativeCheck.png  used on input line 181.
+(pdftex.def)             Requested size: 238.49341pt x 206.81575pt.
+<pix/CorrelationtoGeneralization.png, id=77, 965.6075pt x 315.1775pt>
+File: pix/CorrelationtoGeneralization.png Graphic file (type png)
+<use pix/CorrelationtoGeneralization.png>
+Package pdftex.def Info: pix/CorrelationtoGeneralization.png  used on input lin
+e 189.
+(pdftex.def)             Requested size: 278.23827pt x 90.81721pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+(./iclr2020_conference.bbl
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 12.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [3 <./pix/SVdistributionVGG.png> <./pix/QualitativeCheck.png>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
+ [4 <./pix/CorrelationtoGeneralization.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+ (./iclr2020_conference.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
 Package rerunfilecheck Info: File `iclr2020_conference.out' has not changed.
-(rerunfilecheck)             Checksum: 9BB635B8668EF30C55CA85ED3806B0AB;110.
+(rerunfilecheck)             Checksum: 3761FEC6B3EE3CFCFFEE907DB4FAEE3D;110.
 
 
 LaTeX Warning: There were undefined references.
@@ -1066,28 +1134,34 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 159.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
  ) 
 Here is how much of TeX's memory you used:
- 23991 strings out of 492615
- 431428 string characters out of 6131391
- 511411 words of memory out of 5000000
- 27579 multiletter control sequences out of 15000+600000
- 565916 words of font info for 92 fonts, out of 8000000 for 9000
+ 24140 strings out of 492615
+ 433726 string characters out of 6131391
+ 520307 words of memory out of 5000000
+ 27664 multiletter control sequences out of 15000+600000
+ 571315 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,11n,63p,353b,839s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,63p,1011b,843s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on iclr2020_conference.pdf (2 pages, 197784 bytes).
+f-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/times/utmri8a.pfb>
+Output written on iclr2020_conference.pdf (4 pages, 452045 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 24091 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 29231 words of extra memory for PDF output out of 29859 (max. 10000000)
 

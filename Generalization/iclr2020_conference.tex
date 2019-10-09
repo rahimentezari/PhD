@@ -115,7 +115,7 @@ The whole story starts with \figref{generalization_mystery} . While we expect th
 \label{generalization_mystery}
 \end{figure}
 
-In order to solve this mystery we might have a look on generalization bounds in ML:
+Guiding Q: Why is it a good idea to train VGG19 (20M parameters) on CIFAR 10?\\In order to solve this mystery we might have a look on generalization bounds in ML:
 \begin{equation}
 	error_{test} \leq error_{training} + c \sqrt{\frac{capacity}{m}}
 \label{gen_ml}
@@ -126,12 +126,73 @@ However \eqref{gen_ml} is not working for DL because the number of params are wa
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.5\columnwidth]{pix/NormbasedGenBounds.png}
-\caption{Norm based generalization bounds are way more than number of parameters (~\cite{arora2018stronger})}
+\caption{Norm based generalization bounds are loose, alot more than number of parameters (~\cite{arora2018stronger})}
 \end{center}
 \label{generalization_mystery}
 \end{figure}
+~\cite{arora2018stronger} tries to answer this question: What property of network trained on real data can help to sharpen this bound? They defined \textbf{noise stability} of trained neural network: How injected gaussian noise at a layer affects higher layers? \ie noise propagation in layers. Noise stability ~\cite{aroraicml18}: add gaussian $\eta$ to output x of a layer ($|\eta| = |x|$), then measure change in higher layers, if small then network is \textbf{noise stable}.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.8\columnwidth]{pix/VGGNoiceInjection.png}
+\caption{Attenuation of injected noise on a VGG-19 net trained on CIFAR-10. The x-axis is the index of layers and y-axis denote the relative error due to the noise $(\frac{\left \| \hat{x}^i-x^i \right \|_2}{\left \|x^i \right \|_2})$. A curve starts at the layer where a scaled Gaussian noise is injected to its input, whose $l_2$ norm is set to 10\% of the norm of its original input. As it propagates up, the injected noise has rapidly decreasing effect on higher layers, i.e. The injected noise to higher layers get attenuated very much. This property is shown to imply compressibility (~\cite{arora2018stronger})}
+\end{center}
+\label{VGGnoiseinjection}
+\end{figure}
+They injected gaussian noise into VGG. Fig \figref{VGGnoiseinjection} shows the result. Even for larger noise, i.e. close to the original signal, the factor of the noise is disappearing. They emprically found that noise stability correlates strongly with generalization error during training.
+\fakeparagraph{noise stability to bound effective capacity} How do trained nets achieve noise stability? What does it have to do with generalization? They propose that when we prune the network we inject noise to the model.
+\begin{itemize}
+\item noise stability of one layer~\cite{aroraicml18}: Assume that there is no nonlinearity, \ie fully connected layer (Matrix weight M). This layer is noise stable iff $(\frac{|Mx|}{|x|} \gg \frac{|M\eta|}{|\eta|})$. \\
+What does this mean mathematically? $\frac{|Mx|}{|x|}$ is uppber bounded by the \textbf{top (larger) singular values}  of matrix M, so $\frac{|Mx|}{|x|}\geq \sigma_{max}(M)$. As the gaussian noise is evenly distriuted in all directions, \eg singular directions, a simple calculation shows that the right term is related to the \textbf{$l_2$ norm of singular values} , \ie $\frac{|M\eta|}{|\eta|}) = \frac{\sqrt{\sum_{i} \sigma_i(M)^2}}{\sqrt{n}}$. This suggests that the singular values are concentrated. As \figref{SVdistrubition_vgg} shows, there are few large singular values, and most of them (thousands) are close to zero. These are close to zero, but exactly zero, so they may contribute to the norm, but they are very few large singular values. Dicrading such small values is not a good idea.
 
-~\cite{arora2018stronger} tries to answer this question: What property of network trained on real data can help to sharpen this bound? They defined noise stability of trained neural network: How injected gaussian noise at a layer affects higher layers? \ie noise propagation in layers.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.3\columnwidth]{pix/SVdistributionVGG.png}
+\caption{Distribution of singular values in a filter of layer 10 of VGG19. Such matrices are \textbf{compressible}(~\cite{aroraicml18})}
+\end{center}
+\label{SVdistrubition_vgg}
+\end{figure}
+
+They propose a new compression method, in which at the end number of parameters $\ll$ number of data points (before compression, number of parameters $\gg$ number of data points). Important: compression method allowed to use any number of new random bits, provided they do not depend on data.\\ 
+proof sketch : noise stanility $\rightarrow$ deep net compressible with minimal change to training error.
+\begin{itemize}
+\item idea 1: \textbf{Compress} a layer(randomized in such a way that error introduced are "Gaussian like"). Compression algorithm is like Random Linear Projection, where we take the projection of layer matrix on to these sign matrices (Nontrivial extension to convolutional nets).
+\item  Errors (gaussian noise) \textbf{attenuate} as they go through network, as noted earlier.
+\end{itemize}
+
+\begin{algorithm}[h]
+\caption{Compression }
+\label{alg:LT}
+\begin{algorithmic}[1]
+\State Generate $K$ random sign matrices $M_1, ..., M_k$ (important: picked before seeing the data)
+\State $\hat{A} = \dfrac{1}{k}\sum_{i}^{k}<A,M_t>M_t$
+\end{algorithmic}
+\end{algorithm}
+
+\end{itemize}
+\fakeparagraph{The Quantitatie Bound} we can measure the below definitions on the desired network, and this gives us an upper bound on the capacity of such network. These are the properties that allow noise stability.
+\begin{equation}
+  \label{eq:capacity_compression}
+	capacity \approx (\frac{depth \times activation contraction}{layer cushion \times interlayer cushion})^2,
+\end{equation}
+
+\fakeparagraph{The Qulitatie Check} Correlation with Generalization.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{pix/QualitativeCheck.png}
+\caption{}
+\end{center}
+\label{QualitativeCheck}
+\end{figure}
+\fakeparagraph{The Qulitatie Check} Correlation with Generalization.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{pix/CorrelationtoGeneralization.png}
+\caption{Correlation with Generalization}
+\end{center}
+\label{QualitativeCheck}
+\end{figure}
+
+
 
 
 
